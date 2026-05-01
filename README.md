@@ -2,6 +2,16 @@
 
 Zsh shortcuts for day-to-day Kubernetes work, with kubectl-native autocomplete wired to every alias.
 
+## Quick Start
+
+```bash
+# type shortcut + TAB for live suggestions
+kgp <TAB>                 # pod names / next args
+kl <TAB>                  # pod names for logs
+kdp <TAB>                 # pod names for describe
+kgpn kube-system <TAB>    # pods in kube-system
+```
+
 ## What it includes
 
 - Fast aliases for `get`, `describe`, `logs`, `exec`, `scale`, `delete`, `apply`, and namespace/context commands
@@ -26,6 +36,16 @@ Then restart your shell or run:
 
 ```bash
 source ~/.zshrc
+```
+
+## Usage
+
+```bash
+kgp
+kgpn kube-system
+kl <pod-name>
+kdp <pod-name>
+kex <pod-name> -- sh
 ```
 
 ## Manual install
