@@ -12,6 +12,10 @@ kdp <TAB>                 # pod names for describe
 kgpn kube-system <TAB>    # pods in kube-system
 ```
 
+## Demo
+
+![kubectl zsh autocomplete demo](./autocomplete.gif)
+
 ## What it includes
 
 - Fast aliases for `get`, `describe`, `logs`, `exec`, `scale`, `delete`, `apply`, and namespace/context commands
