@@ -5,7 +5,7 @@ Zsh shortcuts for day-to-day Kubernetes work, with kubectl-native autocomplete w
 ## What it includes
 
 - Fast aliases for `get`, `describe`, `logs`, `exec`, `scale`, `delete`, `apply`, and namespace/context commands
-- Autocomplete for all aliases through `_kubectl`
+- Autocomplete for all aliases through `_k8s_aliases` -> `_kubectl`
 - Completion caching and menu selection for quicker interactive use
 
 ## Requirements
@@ -33,6 +33,8 @@ source ~/.zshrc
 ```bash
 mkdir -p ~/.zsh
 cp kubectl-shortcuts.zsh ~/.zsh/kubectl-shortcuts.zsh
+mkdir -p ~/.zsh/completions
+cp completions/_k8s_aliases ~/.zsh/completions/_k8s_aliases
 echo 'source ~/.zsh/kubectl-shortcuts.zsh' >> ~/.zshrc
 source ~/.zshrc
 ```
@@ -41,6 +43,7 @@ source ~/.zshrc
 
 ```bash
 rm -f ~/.zsh/kubectl-shortcuts.zsh
+rm -f ~/.zsh/completions/_k8s_aliases
 ```
 
 Remove this line from `~/.zshrc`:
@@ -53,3 +56,5 @@ source ~/.zsh/kubectl-shortcuts.zsh
 
 - `watch` aliases (`kwp`, `kwd`, `kwss`) require the `watch` command.
 - `kubectl top` aliases require Metrics Server in your cluster.
+- Pod/namespace suggestions come from `kubectl completion zsh` (`_kubectl`).
+- `_k8s_aliases` is a thin wrapper that keeps alias-specific help text and forwards completion to `_kubectl`.

@@ -1,0 +1,55 @@
+#compdef kgp kgpw kgpa kgn kgd kgss kgsvc kgno kdp kdd kdss kdsvc kdno kl klf klp kex ksh kscale kscaled kscaless kdel kdelp kdeld ka kc kctx kns kwp kwd kwss kpf ktop ktopn ktopp kgpn kln kexn kdn
+
+_k8s_aliases() {
+  local -a help_text
+
+  case $words[1] in
+    kgp) help_text=('Get pods in current namespace') ;;
+    kgpw) help_text=('Get pods with wide output (node, IP, etc.)') ;;
+    kgpa) help_text=('Get pods across all namespaces') ;;
+    kgn) help_text=('List all namespaces') ;;
+    kgd) help_text=('Get deployments in current namespace') ;;
+    kgss) help_text=('Get statefulsets in current namespace') ;;
+    kgsvc) help_text=('Get services in current namespace') ;;
+    kgno) help_text=('Get cluster nodes') ;;
+    kdp) help_text=('Describe pod') ;;
+    kdd) help_text=('Describe deployment') ;;
+    kdss) help_text=('Describe statefulset') ;;
+    kdsvc) help_text=('Describe service') ;;
+    kdno) help_text=('Describe node') ;;
+    kl) help_text=('Get pod logs') ;;
+    klf) help_text=('Follow pod logs') ;;
+    klp) help_text=('Get previous container logs') ;;
+    kex) help_text=('Execute command in pod') ;;
+    ksh) help_text=('Open shell in pod') ;;
+    kscale) help_text=('Scale resources') ;;
+    kscaled) help_text=('Scale deployment') ;;
+    kscaless) help_text=('Scale statefulset') ;;
+    kdel) help_text=('Delete resources') ;;
+    kdelp) help_text=('Delete pod') ;;
+    kdeld) help_text=('Delete deployment') ;;
+    ka) help_text=('Apply from file') ;;
+    kc) help_text=('Create from file') ;;
+    kctx) help_text=('Show current context') ;;
+    kns) help_text=('Set current namespace') ;;
+    kwp) help_text=('Watch pods') ;;
+    kwd) help_text=('Watch deployments') ;;
+    kwss) help_text=('Watch statefulsets') ;;
+    kpf) help_text=('Port forward') ;;
+    ktop) help_text=('Top resources') ;;
+    ktopn) help_text=('Top nodes') ;;
+    ktopp) help_text=('Top pods') ;;
+    kgpn) help_text=('Get pods in namespace') ;;
+    kln) help_text=('Logs in namespace') ;;
+    kexn) help_text=('Exec in namespace') ;;
+    kdn) help_text=('Describe in namespace') ;;
+  esac
+
+  _kubectl
+
+  if [[ -n $help_text ]]; then
+    _message "$help_text"
+  fi
+}
+
+_k8s_aliases "$@"

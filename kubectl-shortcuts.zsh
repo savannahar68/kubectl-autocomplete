@@ -42,10 +42,9 @@ alias kln='kubectl logs -n'
 alias kexn='kubectl exec -n'
 alias kdn='kubectl describe -n'
 
-if ! whence -w compdef >/dev/null 2>&1; then
-  autoload -Uz compinit
-  compinit -C -d "${ZDOTDIR:-$HOME}/.zcompdump"
-fi
+fpath=("${HOME}/.zsh/completions" $fpath)
+autoload -Uz compinit
+compinit -C -d "${ZDOTDIR:-$HOME}/.zcompdump"
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -54,6 +53,19 @@ zstyle ':completion:*' cache-path "${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 
 if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion zsh)
+fi
+
+if whence -w _k8s_aliases >/dev/null 2>&1; then
+  compdef _k8s_aliases kgp kgpw kgpa kgn kgd kgss kgsvc kgno
+  compdef _k8s_aliases kdp kdd kdss kdsvc kdno
+  compdef _k8s_aliases kl klf klp
+  compdef _k8s_aliases kex ksh
+  compdef _k8s_aliases kscale kscaled kscaless
+  compdef _k8s_aliases kdel kdelp kdeld
+  compdef _k8s_aliases ka kc
+  compdef _k8s_aliases kpf ktop ktopn ktopp
+  compdef _k8s_aliases kgpn kln kexn kdn
+else
   compdef _kubectl kgp kgpw kgpa kgn kgd kgss kgsvc kgno
   compdef _kubectl kdp kdd kdss kdsvc kdno
   compdef _kubectl kl klf klp
